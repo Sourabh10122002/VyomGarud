@@ -73,7 +73,7 @@ export default function Hero() {
             className="relative h-full isolate overflow-hidden rounded-2xl border border-white/10 bg-[#0b0e13] accent-gradient shadow-xl"
           >
             <Image
-              src="https://loremflickr.com/1200/800/drone,airborne"
+              src="https://loremflickr.com/1200/800/drone,image"
               alt="UAV in flight"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
