@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
+/* Brand tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f1115; /* charcoal */
+  --foreground: #e6e6e7; /* near white */
+  --accent: #ff7b00;     /* brand orange */
+  --charcoal: #0f1115;
 }
 
+/* Tailwind v4 inline theme mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent);
+  --color-charcoal: var(--charcoal);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base */
+html, body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Typography helpers */
+.font-heading { font-family: var(--font-heading), system-ui, sans-serif; }
+.font-body { font-family: var(--font-body), system-ui, sans-serif; }
+
+/* Subtle military/futuristic background helpers */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.accent-gradient {
+  background-image:
+    radial-gradient(600px circle at 10% 10%, rgba(255, 123, 0, 0.10), transparent 40%),
+    radial-gradient(600px circle at 80% 20%, rgba(255, 123, 0, 0.08), transparent 40%);
+}
+
+/* Marquee (infinite scrolling company name) */
+.marquee-container {
+  overflow: hidden;
+}
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 18s linear infinite;
+}
+.marquee-item { padding: 0.75rem 0; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
